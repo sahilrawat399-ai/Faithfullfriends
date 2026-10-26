@@ -1,0 +1,8 @@
+{
+  "name": "Faithful Friends Welfare",
+  "description": "Premium NGO platform dedicated to feeding underprivileged children, hungry families, cow welfare, and verified community assistance.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
