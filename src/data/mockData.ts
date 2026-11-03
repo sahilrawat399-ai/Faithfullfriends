@@ -73,39 +73,39 @@ export const INITIAL_IMPACT: ImpactStats = {
 export const GALLERY_ITEMS: GalleryItem[] = [
   {
     id: 'g-1',
-    title: 'Morning Nutritious Meal Drive',
+    title: 'Nutritious Food & Children Celebration Drive',
     category: 'children',
     image: IMAGES.childMeal,
-    caption: 'Children receiving hot nutritious dal-khichdi and seasonal apples before their remedial study session.',
+    caption: 'Children and volunteers celebrating with wholesome treats, refreshments, and nutritional packages at our community centre.',
     date: 'October 2026',
-    location: 'North Delhi Community Learning Centre'
+    location: 'Faridabad Learning & Care Centre'
   },
   {
     id: 'g-2',
     title: 'Community Care & Children Welfare Drive',
     category: 'meals',
     image: IMAGES.feedHungry,
-    caption: 'Faithful Friends Welfare team, educators, and volunteers gathering with children during our nutrition and community support initiative.',
+    caption: 'Faithful Friends Welfare Trust team, educators, and volunteers gathering with children during our nutrition and community support initiative.',
     date: 'October 2026',
     location: 'Community Centre, New Delhi'
   },
   {
     id: 'g-3',
-    title: 'Gau Seva & Fodder Loading',
+    title: 'Gau Seva & Gaushala Sanctuary Care',
     category: 'cows',
     image: IMAGES.careForCows,
-    caption: 'Fresh organic green fodder and jaggery distributed to over 200 rescue cows at our partner gaushala sanctuary.',
-    date: 'September 2026',
-    location: 'Vrindavan Gaushala Care Project'
+    caption: 'Faithful Friends Welfare Trust team visiting partner Gaushala sanctuary providing regular green fodder, veterinary assistance, and shelter support.',
+    date: 'October 2026',
+    location: 'Gaushala Care Project, Haryana'
   },
   {
     id: 'g-4',
-    title: 'Winter Relief Blanket Distribution',
+    title: 'Community Welfare & Family Assistance',
     category: 'community',
     image: IMAGES.communityWelfare,
-    caption: '1,200 thermal fleece blankets and dry ration packages distributed to elderly residents and migrant families.',
-    date: 'September 2026',
-    location: 'Yamuna Floodplain Settlements'
+    caption: 'Trust coordinators, families, and young children gathered together during community distribution and empowerment drives.',
+    date: 'October 2026',
+    location: 'Faithful Friends Community Centre'
   },
   {
     id: 'g-5',
@@ -129,7 +129,7 @@ export const STORIES_OF_CHANGE: StoryItem[] = [
     metrics: '380 children supported in the cluster',
     fullStory: `Eight-year-old Riya and her brother Anuj used to skip their morning classes due to hunger. Their parents work twelve-hour shifts as construction helpers and often left home before sunrise without resources for breakfast.
 
-Through Faithful Friends Welfare's morning nourishment initiative, Riya and Anuj now receive a warm, protein-packed breakfast bowl every single morning before school starts. Their school teacher reports an astounding turnaround: Riya's attendance has risen to 94%, and Anuj has developed an eager fascination with mathematics. Small acts of kindness, multiplied across hundreds of children, change the trajectory of entire generations.`
+Through Faithful Friends Welfare Trust's morning nourishment initiative, Riya and Anuj now receive a warm, protein-packed breakfast bowl every single morning before school starts. Their school teacher reports an astounding turnaround: Riya's attendance has risen to 94%, and Anuj has developed an eager fascination with mathematics. Small acts of kindness, multiplied across hundreds of children, change the trajectory of entire generations.`
   },
   {
     id: 'story-2',
@@ -139,7 +139,7 @@ Through Faithful Friends Welfare's morning nourishment initiative, Riya and Anuj
     date: 'September 28, 2026',
     image: IMAGES.careForCows,
     metrics: '24/7 Veterinary & Fodder Care',
-    fullStory: `Found wandering near a busy national highway divider with a fractured rear leg, Kamdhenu was severely malnourished and frightened. A passerby contacted Faithful Friends Welfare's animal welfare helpline.
+    fullStory: `Found wandering near a busy national highway divider with a fractured rear leg, Kamdhenu was severely malnourished and frightened. A passerby contacted Faithful Friends Welfare Trust's animal welfare helpline.
 
 Within 45 minutes, our rescue vehicle safely transported her to the Gaushala sanctuary. Over six weeks of intensive veterinary treatment, calcium supplementation, and fresh green grass nourishment, Kamdhenu healed completely. Three months later, she gave birth to a healthy calf. Today, both thrive in a safe, open paddock surrounded by loving caretakers.`
   },

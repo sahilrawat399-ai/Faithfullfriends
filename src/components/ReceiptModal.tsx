@@ -76,7 +76,7 @@ export const ReceiptModal: React.FC<ReceiptModalProps> = ({ donation, onClose })
   const handleDownload = () => {
     const textContent = `
 ============================================================
-           FAITHFUL FRIENDS WELFARE SOCIETY
+           FAITHFUL FRIENDS WELFARE TRUST
     OFFICIAL DONATION RECEIPT & 80G TAX CERTIFICATE
 ============================================================
 Receipt Number: ${donation.receiptNumber}
@@ -100,7 +100,7 @@ Allocated To:   ${donation.causeTitle}
 Frequency:      ${donation.frequency}
 ------------------------------------------------------------
 STATUTORY COMPLIANCE:
-Society Reg No: FFWS/2021/DEL/7841
+Trust Reg No:   FFWT/2021/DEL/7841
 NITI Aayog UID: DL/2021/0284721
 80G Exemption:  AAATF1289RF20214
 12A Exemption:  AAATF1289RE20212
@@ -169,10 +169,10 @@ make a world of difference.
           <div className="border-b-2 border-[#103D2B] pb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
             <div>
               <h2 className="text-2xl sm:text-3xl font-serif font-bold text-[#103D2B] tracking-tight">
-                Faithful Friends Welfare
+                Faithful Friends Welfare Trust
               </h2>
               <p className="text-xs text-[#202720]/75 font-medium mt-0.5">
-                Faithful Friends Welfare Society · Reg. No: FFWS/2021/DEL/7841
+                Faithful Friends Welfare Trust · Reg. No: FFWT/2021/DEL/7841
               </p>
               <p className="text-[11px] text-[#202720]/60">
                 NITI Aayog Darpan UID: DL/2021/0284721 · Sector 5, Rohini, New Delhi
@@ -295,7 +295,7 @@ make a world of difference.
                 Authorized Signatory
               </div>
               <span className="text-[10px] uppercase tracking-wider text-stone-500 block">
-                Faithful Friends Welfare Society
+                Faithful Friends Welfare Trust
               </span>
             </div>
           </div>

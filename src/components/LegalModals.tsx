@@ -120,14 +120,14 @@ export const LegalModals: React.FC<LegalModalsProps> = ({ type, onClose, setting
                   50% Tax Deduction under Section 80G
                 </span>
                 <p className="text-xs">
-                  Donations made to Faithful Friends Welfare Society are eligible for deduction under Section 80G
+                  Donations made to Faithful Friends Welfare Trust are eligible for deduction under Section 80G
                   of the Income Tax Act, 1961.
                 </p>
               </div>
 
               <div className="space-y-2 bg-white p-4 rounded-xl border border-[#103D2B]/10">
                 <p><span className="font-semibold text-[#103D2B]">Legal Name:</span> {settings.legalName}</p>
-                <p><span className="font-semibold text-[#103D2B]">Society Reg No:</span> {settings.registrationNumber}</p>
+                <p><span className="font-semibold text-[#103D2B]">Trust Reg No:</span> {settings.registrationNumber}</p>
                 <p><span className="font-semibold text-[#103D2B]">80G Unique Reg No (URN):</span> <span className="font-mono">{settings.section80G}</span></p>
                 <p><span className="font-semibold text-[#103D2B]">12A Unique Reg No (URN):</span> <span className="font-mono">{settings.section12A}</span></p>
               </div>

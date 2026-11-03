@@ -205,7 +205,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
             </div>
             <div>
               <h2 className="text-lg font-serif font-bold text-white">
-                Faithful Friends Welfare · Administration Console
+                Faithful Friends Welfare Trust · Administration Console
               </h2>
               <p className="text-xs text-[#FAF7F0]/80">
                 Auditable Operations, Statutory Compliance & Real-Time Donor Records

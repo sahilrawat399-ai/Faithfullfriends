@@ -483,7 +483,7 @@ export const VolunteerSection: React.FC<VolunteerSectionProps> = ({ settings }) 
                     Official Google Form Integration
                   </h3>
                   <p className="text-xs text-[#202720]/70">
-                    Direct integration with Faithful Friends Welfare Google Workspace forms.
+                    Direct integration with Faithful Friends Welfare Trust Google Workspace forms.
                   </p>
                 </div>
 

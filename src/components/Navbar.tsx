@@ -49,7 +49,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onDonateClick, onAdminClick }) =
                 isScrolled ? 'text-[#103D2B]' : 'text-white'
               }`}
             >
-              Faithful Friends Welfare
+              Faithful Friends Welfare Trust
             </a>
 
             {/* Zone 2: Concise single-line navigation links */}
@@ -104,7 +104,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onDonateClick, onAdminClick }) =
             <div>
               <div className="flex items-center justify-between pb-4 border-b border-[#103D2B]/10">
                 <span className="font-serif font-bold text-lg text-[#103D2B]">
-                  Faithful Friends Welfare
+                  Faithful Friends Welfare Trust
                 </span>
                 <button
                   onClick={() => setMobileMenuOpen(false)}

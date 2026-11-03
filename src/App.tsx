@@ -18,8 +18,8 @@ import { Cause, ImpactStats, SystemSettings, DonationRecord } from './types';
 import { INITIAL_CAUSES, INITIAL_IMPACT } from './data/mockData';
 
 const DEFAULT_SETTINGS: SystemSettings = {
-  ngoName: 'Faithful Friends Welfare',
-  legalName: 'Faithful Friends Welfare Society',
+  ngoName: 'Faithful Friends Welfare Trust',
+  legalName: 'Faithful Friends Welfare Trust',
   registrationNumber: 'FFWS/2021/DEL/7841',
   darpanId: 'DL/2021/0284721',
   section80G: 'AAATF1289RF20214',

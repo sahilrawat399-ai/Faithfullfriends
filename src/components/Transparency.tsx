@@ -14,7 +14,7 @@ export const Transparency: React.FC<TransparencyProps> = ({ settings, onOpenLega
     // Generate text/audit placeholder download
     const content = `
 ============================================================
-              FAITHFUL FRIENDS WELFARE SOCIETY
+              FAITHFUL FRIENDS WELFARE TRUST
                STATUTORY GOVERNANCE & AUDIT REPORT
 ============================================================
 Document:        ${docName}
@@ -38,8 +38,8 @@ Financial Summary (Annual Report):
 Auditor's Note:
 The balance sheet and receipts/payments statements have been 
 verified with underlying banking ledgers, gateway settlements, 
-and field distribution records in full compliance with the 
-Societies Registration Act.
+and field distribution records in full compliance with statutory 
+trust regulations and Indian Trusts Act.
 ============================================================
     `.trim();
 
@@ -76,7 +76,7 @@ Societies Registration Act.
           </h2>
 
           <p className="text-base sm:text-lg text-[#202720]/80 leading-relaxed font-normal">
-            As a registered non-profit welfare society, we operate with open books and public
+            As a registered non-profit welfare trust, we operate with open books and public
             accountability. Here are our legal registration documents, tax exemption credentials,
             and audited financials.
           </p>
@@ -108,7 +108,7 @@ Societies Registration Act.
                 <span className="font-mono font-semibold">{settings.darpanId}</span>
               </p>
               <p>
-                <span className="text-stone-500 font-medium">Act:</span> Societies Registration Act XXI of 1860
+                <span className="text-stone-500 font-medium">Act:</span> Indian Trusts Act 1882
               </p>
             </div>
 

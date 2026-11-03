@@ -13,7 +13,7 @@ export const Mission: React.FC = () => {
             <span aria-hidden="true">·</span>
             <span>Est. 2021</span>
             <span aria-hidden="true">·</span>
-            <span>Registered Society</span>
+            <span>Registered Trust</span>
           </div>
 
           <h2
@@ -24,7 +24,7 @@ export const Mission: React.FC = () => {
           </h2>
 
           <p className="text-lg text-[#202720]/85 leading-relaxed font-normal">
-            Faithful Friends Welfare was founded on a simple, uncompromising conviction:
+            Faithful Friends Welfare Trust was founded on a simple, uncompromising conviction:
             no child should go to sleep hungry, no abandoned animal should suffer without care,
             and no family facing hardship should stand alone. We bridge the gap between people
             who care and lives that urgently need assistance.
@@ -59,7 +59,7 @@ export const Mission: React.FC = () => {
                 When we feed a child or care for a mute animal, we heal our own humanity.”
               </blockquote>
               <div className="mt-3 text-xs uppercase tracking-widest text-[#176B4D] font-medium">
-                Governing Board Declaration · Faithful Friends Welfare Society
+                Governing Board Declaration · Faithful Friends Welfare Trust
               </div>
             </div>
 
@@ -124,7 +124,7 @@ export const Mission: React.FC = () => {
             <div className="relative rounded-xl overflow-hidden shadow-lg border border-[#103D2B]/10 group">
               <img
                 src={IMAGES.feedHungry}
-                alt="Faithful Friends Welfare volunteers, teachers, and children during a community care and nutrition program"
+                alt="Faithful Friends Welfare Trust volunteers, teachers, and children during a community care and nutrition program"
                 className="w-full h-[420px] object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                 referrerPolicy="no-referrer"
               />
@@ -134,7 +134,7 @@ export const Mission: React.FC = () => {
                   Field Documentation · Oct 2026
                 </p>
                 <p className="text-sm font-medium mt-1">
-                  Faithful Friends Welfare team with children and community members during our nutrition and welfare drive.
+                  Faithful Friends Welfare Trust team with children and community members during our nutrition and welfare drive.
                 </p>
               </div>
             </div>

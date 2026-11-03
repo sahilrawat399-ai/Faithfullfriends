@@ -102,9 +102,9 @@ export const Hero: React.FC<HeroProps> = ({
         <div className="max-w-3xl">
           {/* Subdued Editorial Eyebrow */}
           <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-[#D6B46A] font-semibold mb-4">
-            <span>Faithful Friends Welfare</span>
+            <span>Faithful Friends Welfare Trust</span>
             <span aria-hidden="true">·</span>
-            <span>Registered Non-Profit Society</span>
+            <span>Registered Non-Profit Trust</span>
             <span aria-hidden="true">·</span>
             <span>80G Tax Exemption</span>
           </div>

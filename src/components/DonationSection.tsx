@@ -451,7 +451,7 @@ export const DonationSection: React.FC<DonationSectionProps> = ({
                   Secure Payment Gateway · Test Mode
                 </p>
                 <h3 className="text-lg font-serif font-bold text-white">
-                  Faithful Friends Welfare
+                  Faithful Friends Welfare Trust
                 </h3>
               </div>
               <div className="text-right">

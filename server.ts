@@ -233,8 +233,8 @@ const partnershipsStore: PartnershipSubmission[] = [
 
 // Admin & Portal Settings
 let systemSettings = {
-  ngoName: 'Faithful Friends Welfare',
-  legalName: 'Faithful Friends Welfare Society',
+  ngoName: 'Faithful Friends Welfare Trust',
+  legalName: 'Faithful Friends Welfare Trust',
   registrationNumber: 'FFWS/2021/DEL/7841',
   darpanId: 'DL/2021/0284721',
   section80G: 'AAATF1289RF20214',
@@ -531,7 +531,7 @@ app.post('/api/volunteer/register', (req: Request, res: Response) => {
 
     res.json({
       success: true,
-      message: 'Thank you for stepping forward! A volunteer coordinator from Faithful Friends Welfare will reach out to you within 24-48 hours.',
+      message: 'Thank you for stepping forward! A volunteer coordinator from Faithful Friends Welfare Trust will reach out to you within 24-48 hours.',
       volunteer: newVolunteer
     });
   } catch (err: any) {
@@ -624,7 +624,7 @@ async function startServer() {
   }
 
   app.listen(PORT, '0.0.0.0', () => {
-    console.log(`[FFW] Faithful Friends Welfare server listening on http://0.0.0.0:${PORT}`);
+    console.log(`[FFW] Faithful Friends Welfare Trust server listening on http://0.0.0.0:${PORT}`);
   });
 }
 

@@ -23,10 +23,10 @@ export const Footer: React.FC<FooterProps> = ({
           {/* Brand & Mission Statement (5 cols) */}
           <div className="lg:col-span-5 space-y-4">
             <h3 className="text-2xl font-serif font-bold text-white tracking-tight">
-              Faithful Friends Welfare
+              Faithful Friends Welfare Trust
             </h3>
             <p className="text-xs uppercase tracking-widest text-[#D6B46A] font-semibold">
-              Faithful Friends Welfare Society · Reg. No: {settings.registrationNumber}
+              Faithful Friends Welfare Trust · Reg. No: {settings.registrationNumber}
             </p>
             <p className="text-sm text-[#FAF7F0]/80 leading-relaxed max-w-md">
               A registered non-profit welfare organisation dedicated to distributing wholesome meals
