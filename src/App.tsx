@@ -11,6 +11,7 @@ import { VolunteerSection } from './components/VolunteerSection';
 import { Transparency } from './components/Transparency';
 import { Footer } from './components/Footer';
 import { ReceiptModal } from './components/ReceiptModal';
+import { UpiQrModal } from './components/UpiQrModal';
 import { AdminDashboard } from './components/AdminDashboard';
 import { LegalModals } from './components/LegalModals';
 
@@ -31,7 +32,10 @@ const DEFAULT_SETTINGS: SystemSettings = {
   googleFormsPartnerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScDemoPartnerForm_FFWelfare/viewform?embedded=true',
   googleFormsEnabled: true,
   razorpayKeyId: 'rzp_test_FFWelfareDemo',
-  upiId: 'faithfulfriends@sbi',
+  upiId: '8595555318@icici',
+  upiNumber: '8595555318',
+  merchantName: 'FAITHFUL FRIENDS WELFARE TRUST',
+  bankName: 'ICICI Bank',
   receiptPrefix: 'FFW/2026-27/'
 };
 
@@ -42,6 +46,8 @@ export default function App() {
 
   // Interaction Modals & States
   const [selectedCauseId, setSelectedCauseId] = useState<string>('feed-child');
+  const [isUpiModalOpen, setIsUpiModalOpen] = useState(false);
+  const [upiModalAmount, setUpiModalAmount] = useState<number>(501);
   const [activeReceipt, setActiveReceipt] = useState<DonationRecord | null>(null);
   const [isAdminOpen, setIsAdminOpen] = useState(false);
   const [legalModalType, setLegalModalType] = useState<'privacy' | 'terms' | 'refund' | 'tax80g' | null>(null);
@@ -93,6 +99,12 @@ export default function App() {
     }
   };
 
+  const openUpiModal = (amount: number = 501, causeId: string = 'feed-child') => {
+    setUpiModalAmount(amount);
+    setSelectedCauseId(causeId);
+    setIsUpiModalOpen(true);
+  };
+
   const handleSelectCauseToDonate = (causeId: string) => {
     setSelectedCauseId(causeId);
     scrollToDonate();
@@ -116,6 +128,7 @@ export default function App() {
       {/* Sticky 3-Zone Navigation Bar */}
       <Navbar
         onDonateClick={scrollToDonate}
+        onMakePaymentClick={() => openUpiModal(501, selectedCauseId)}
         onAdminClick={() => setIsAdminOpen(true)}
       />
 
@@ -124,6 +137,7 @@ export default function App() {
         {/* Cinematic Hero Section */}
         <Hero
           onDonateClick={scrollToDonate}
+          onMakePaymentClick={() => openUpiModal(501, 'feed-child')}
           onExploreClick={scrollToMission}
           impactMetrics={{
             mealsDistributed: impactStats.mealsDistributed,
@@ -140,6 +154,7 @@ export default function App() {
         <Causes
           causes={causes}
           onSelectCauseToDonate={handleSelectCauseToDonate}
+          onOpenUpiModal={(amt, id) => openUpiModal(amt, id)}
         />
 
         {/* Primary Interactive Donation Form */}
@@ -147,6 +162,7 @@ export default function App() {
           causes={causes}
           selectedCauseId={selectedCauseId}
           onDonationSuccess={handleDonationSuccess}
+          onOpenUpiModal={(amt, id) => openUpiModal(amt, id)}
         />
 
         {/* Verified Impact Dashboard */}
@@ -175,8 +191,19 @@ export default function App() {
       <Footer
         settings={systemSettings}
         onDonateClick={scrollToDonate}
+        onMakePaymentClick={() => openUpiModal(501, selectedCauseId)}
         onAdminClick={() => setIsAdminOpen(true)}
         onOpenLegalModal={(type) => setLegalModalType(type)}
+      />
+
+      {/* Official ICICI Bank UPI QR Payment & Verification Modal */}
+      <UpiQrModal
+        isOpen={isUpiModalOpen}
+        onClose={() => setIsUpiModalOpen(false)}
+        causes={causes}
+        selectedCauseId={selectedCauseId}
+        initialAmount={upiModalAmount}
+        onDonationVerified={handleDonationSuccess}
       />
 
       {/* Verified 80G Donation Receipt Modal */}

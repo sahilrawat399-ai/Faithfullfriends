@@ -57,6 +57,9 @@ export interface SystemSettings {
   googleFormsEnabled: boolean;
   razorpayKeyId: string;
   upiId: string;
+  upiNumber?: string;
+  merchantName?: string;
+  bankName?: string;
   receiptPrefix: string;
   hasServerSecret?: boolean;
 }

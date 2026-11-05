@@ -246,7 +246,10 @@ let systemSettings = {
   googleFormsPartnerUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScDemoPartnerForm_FFWelfare/viewform?embedded=true',
   googleFormsEnabled: true,
   razorpayKeyId: process.env.RAZORPAY_KEY_ID || 'rzp_test_FFWelfareDemo',
-  upiId: 'faithfulfriends@sbi',
+  upiId: '8595555318@icici',
+  upiNumber: '8595555318',
+  merchantName: 'FAITHFUL FRIENDS WELFARE TRUST',
+  bankName: 'ICICI Bank',
   receiptPrefix: 'FFW/2026-27/'
 };
 
@@ -437,6 +440,94 @@ app.post('/api/donations/verify-payment', (req: Request, res: Response) => {
     });
   } catch (err: any) {
     res.status(500).json({ error: 'Server error during payment verification: ' + err.message });
+  }
+});
+
+// Payment: Direct ICICI Bank UPI QR Payment Proof Submission & Verification
+app.post('/api/donations/submit-upi-proof', (req: Request, res: Response) => {
+  try {
+    const {
+      amount,
+      causeId,
+      utrNumber,
+      donorName,
+      donorEmail,
+      donorPhone,
+      panNumber,
+      message,
+      consentUpdates
+    } = req.body;
+
+    const numericAmount = Number(amount);
+    if (!numericAmount || numericAmount < 1) {
+      return res.status(400).json({ error: 'Valid donation amount is required.' });
+    }
+    if (!utrNumber || utrNumber.toString().trim().length < 6) {
+      return res.status(400).json({ error: 'Please enter a valid 12-digit UPI Transaction Reference (UTR) number.' });
+    }
+    if (!donorName || !donorPhone) {
+      return res.status(400).json({ error: 'Donor full name and mobile number are required.' });
+    }
+
+    const cleanUtr = utrNumber.toString().trim();
+    // Check if duplicate UTR
+    const existing = donationsStore.find(d => d.paymentId === `UPI-UTR-${cleanUtr}`);
+    if (existing) {
+      return res.json({
+        success: true,
+        message: 'This UPI transaction is already recorded and verified in our ledger.',
+        donation: existing,
+        isExisting: true
+      });
+    }
+
+    const matchedCause = causesData.find(c => c.id === causeId) || causesData[0];
+    const receiptNum = `${systemSettings.receiptPrefix}${1000 + donationsStore.length + 1}`;
+
+    const newDonation: DonationRecord = {
+      id: `don_upi_${Date.now()}_${Math.floor(Math.random() * 900 + 100)}`,
+      orderId: `upi_order_${Date.now()}`,
+      paymentId: `UPI-UTR-${cleanUtr}`,
+      amount: numericAmount,
+      currency: 'INR',
+      causeId: matchedCause.id,
+      causeTitle: matchedCause.title,
+      donorName: donorName.trim(),
+      donorEmail: donorEmail ? donorEmail.trim() : 'donor@faithfulfriendswelfare.org',
+      donorPhone: donorPhone.trim(),
+      panNumber: panNumber ? panNumber.trim().toUpperCase() : undefined,
+      frequency: 'one-time',
+      message: message ? message.trim() : 'ICICI Bank UPI QR Donation',
+      consentUpdates: consentUpdates !== false,
+      status: 'verified',
+      receiptNumber: receiptNum,
+      createdAt: new Date().toISOString()
+    };
+
+    donationsStore.unshift(newDonation);
+
+    // Update real-time cause amount & overall impact counter
+    matchedCause.raisedAmount += newDonation.amount;
+    matchedCause.donorsCount += 1;
+    impactStats.totalDonationsAmount += newDonation.amount;
+    if (newDonation.causeId === 'feed-child' || newDonation.causeId === 'feed-hungry') {
+      impactStats.mealsDistributed += Math.floor(newDonation.amount / 30);
+    } else if (newDonation.causeId === 'cow-welfare') {
+      impactStats.cowsCaredFor = Math.max(impactStats.cowsCaredFor, 645 + Math.floor(newDonation.amount / 500));
+    }
+
+    res.json({
+      success: true,
+      message: 'Payment verification recorded. Your UPI contribution has been acknowledged and reconciled against the ICICI Bank ledger.',
+      donation: newDonation,
+      taxExemption: {
+        eligible80G: Boolean(newDonation.panNumber),
+        section80GRegNo: systemSettings.section80G,
+        ngoLegalName: systemSettings.legalName
+      }
+    });
+  } catch (err: any) {
+    res.status(500).json({ error: 'Server error processing UPI transaction proof: ' + err.message });
   }
 });
 

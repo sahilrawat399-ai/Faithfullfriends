@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
-import { Heart, ShieldCheck, Lock, CheckCircle, CreditCard, Sparkles, AlertCircle } from 'lucide-react';
+import { Heart, ShieldCheck, Lock, CheckCircle, CreditCard, Sparkles, AlertCircle, QrCode, ArrowRight } from 'lucide-react';
 import { Cause, DonationRecord } from '../types';
 
 interface DonationSectionProps {
   causes: Cause[];
   selectedCauseId?: string;
   onDonationSuccess: (donation: DonationRecord) => void;
+  onOpenUpiModal?: (amount?: number, causeId?: string) => void;
 }
 
 export const DonationSection: React.FC<DonationSectionProps> = ({
   causes,
   selectedCauseId,
   onDonationSuccess,
+  onOpenUpiModal,
 }) => {
   const [frequency, setFrequency] = useState<'one-time' | 'monthly'>('one-time');
   const [selectedAmount, setSelectedAmount] = useState<number | null>(501);
@@ -205,7 +207,30 @@ export const DonationSection: React.FC<DonationSectionProps> = ({
 
         {/* Central Donation Card */}
         <div className="max-w-2xl mx-auto bg-white rounded-2xl border border-[#103D2B]/12 shadow-xl p-6 sm:p-10">
-          <form onSubmit={handleInitiateDonation} className="space-y-8">
+          <form onSubmit={handleInitiateDonation} className="space-y-6 sm:space-y-8">
+            {/* Quick UPI QR Option Banner */}
+            <div className="p-4 bg-gradient-to-r from-blue-50 via-white to-amber-50 rounded-xl border border-[#003366]/20 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-xs">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-[#003366] text-white flex items-center justify-center shrink-0 shadow-sm">
+                  <QrCode className="w-5 h-5 text-[#D6B46A]" />
+                </div>
+                <div>
+                  <p className="text-xs font-bold text-[#003366]">Pay Instantly via ICICI Bank UPI QR</p>
+                  <p className="text-[11px] text-[#202720]/75">
+                    Scan with Google Pay, PhonePe, Paytm, BHIM, or any UPI App
+                  </p>
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={() => onOpenUpiModal?.(effectiveAmount, activeCause)}
+                className="px-4 py-2 bg-[#003366] hover:bg-[#103D2B] text-white rounded-lg text-xs font-bold tracking-wide transition-all shadow-sm flex items-center justify-center gap-1.5 shrink-0"
+              >
+                <span>Scan QR & Pay</span>
+                <ArrowRight className="w-3.5 h-3.5 text-[#D6B46A]" />
+              </button>
+            </div>
+
             {/* Frequency Selector */}
             <div>
               <label className="block text-xs uppercase tracking-wider text-[#103D2B] font-bold mb-2">
@@ -402,8 +427,8 @@ export const DonationSection: React.FC<DonationSectionProps> = ({
               </div>
             )}
 
-            {/* Primary Submit Button */}
-            <div>
+            {/* Primary Submit Button & Direct UPI Option */}
+            <div className="space-y-3">
               <button
                 type="submit"
                 disabled={isSubmitting}
@@ -415,6 +440,15 @@ export const DonationSection: React.FC<DonationSectionProps> = ({
                     ? 'Preparing Secure Checkout...'
                     : `Proceed to Donate ₹${effectiveAmount ? effectiveAmount.toLocaleString('en-IN') : '0'}`}
                 </span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => onOpenUpiModal?.(effectiveAmount, activeCause)}
+                className="w-full py-3.5 px-6 bg-white hover:bg-stone-50 text-[#003366] rounded-xl font-bold text-sm border-2 border-[#003366]/30 hover:border-[#003366] transition-all flex items-center justify-center gap-2 shadow-xs active:scale-[0.99] cursor-pointer"
+              >
+                <QrCode className="w-4 h-4 text-[#D6B46A]" />
+                <span>Make a Payment (Scan Official ICICI UPI QR)</span>
               </button>
             </div>
 

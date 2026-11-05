@@ -5,6 +5,7 @@ import { SystemSettings } from '../types';
 interface FooterProps {
   settings: SystemSettings;
   onDonateClick: () => void;
+  onMakePaymentClick?: () => void;
   onAdminClick: () => void;
   onOpenLegalModal: (type: 'privacy' | 'terms' | 'refund' | 'tax80g') => void;
 }
@@ -12,6 +13,7 @@ interface FooterProps {
 export const Footer: React.FC<FooterProps> = ({
   settings,
   onDonateClick,
+  onMakePaymentClick,
   onAdminClick,
   onOpenLegalModal,
 }) => {
@@ -34,13 +36,21 @@ export const Footer: React.FC<FooterProps> = ({
               direct community relief across India.
             </p>
 
-            <div className="pt-2">
+            <div className="pt-2 flex flex-wrap items-center gap-2.5">
               <button
                 onClick={onDonateClick}
-                className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#176B4D] hover:bg-[#14532D] text-white rounded-lg text-xs font-semibold shadow transition-all border border-[#D6B46A]/40 cursor-pointer"
+                className="inline-flex items-center gap-2 px-4 py-2.5 bg-[#176B4D] hover:bg-[#14532D] text-white rounded-lg text-xs font-semibold shadow transition-all border border-[#D6B46A]/40 cursor-pointer"
               >
                 <Heart className="w-4 h-4 text-[#D6B46A] fill-[#D6B46A]" />
-                <span>Make a Tax-Deductible Donation</span>
+                <span>Donate Now (80G)</span>
+              </button>
+
+              <button
+                onClick={onMakePaymentClick || onDonateClick}
+                className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-white hover:bg-stone-100 text-[#003366] rounded-lg text-xs font-bold shadow transition-all border border-[#D6B46A] cursor-pointer"
+              >
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                <span>Make a Payment (UPI QR)</span>
               </button>
             </div>
           </div>

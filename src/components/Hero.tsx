@@ -4,6 +4,7 @@ import { IMAGES } from '../data/mockData';
 
 interface HeroProps {
   onDonateClick: () => void;
+  onMakePaymentClick?: () => void;
   onExploreClick: () => void;
   impactMetrics: {
     mealsDistributed: number;
@@ -15,6 +16,7 @@ interface HeroProps {
 
 export const Hero: React.FC<HeroProps> = ({
   onDonateClick,
+  onMakePaymentClick,
   onExploreClick,
   impactMetrics,
 }) => {
@@ -131,20 +133,28 @@ export const Hero: React.FC<HeroProps> = ({
           </p>
 
           {/* Primary & Secondary CTAs */}
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-5 mb-8">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 mb-8">
             <button
               onClick={onDonateClick}
-              className="inline-flex items-center justify-center gap-2.5 px-8 py-4 text-base font-semibold text-white bg-[#176B4D] hover:bg-[#103D2B] rounded-lg shadow-lg hover:shadow-xl transition-all border border-[#D6B46A]/40 active:scale-[0.98] group"
+              className="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 sm:py-4 text-sm sm:text-base font-semibold text-white bg-[#176B4D] hover:bg-[#103D2B] rounded-lg shadow-lg hover:shadow-xl transition-all border border-[#D6B46A]/40 active:scale-[0.98] group"
             >
               <Heart className="w-5 h-5 text-[#D6B46A] fill-[#D6B46A] group-hover:scale-110 transition-transform" />
               <span>Donate Now</span>
             </button>
 
             <button
-              onClick={onExploreClick}
-              className="inline-flex items-center justify-center gap-2 px-6 py-4 text-base font-medium text-white hover:text-[#FAF7F0] bg-white/10 hover:bg-white/15 backdrop-blur-sm rounded-lg border border-white/20 transition-all"
+              onClick={onMakePaymentClick || onDonateClick}
+              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 sm:py-4 text-sm sm:text-base font-semibold text-[#003366] bg-white hover:bg-[#FAF7F0] rounded-lg shadow-md hover:shadow-lg transition-all border border-[#D6B46A] active:scale-[0.98]"
             >
-              <span>Explore Our Mission</span>
+              <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
+              <span>Make a Payment (UPI QR)</span>
+            </button>
+
+            <button
+              onClick={onExploreClick}
+              className="inline-flex items-center justify-center gap-2 px-5 py-3.5 sm:py-4 text-sm sm:text-base font-medium text-white hover:text-[#FAF7F0] bg-white/10 hover:bg-white/15 backdrop-blur-sm rounded-lg border border-white/20 transition-all"
+            >
+              <span>Explore Mission</span>
               <ChevronRight className="w-4 h-4 text-[#D6B46A]" />
             </button>
           </div>

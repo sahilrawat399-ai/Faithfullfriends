@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
-import { Heart, ArrowRight, Info, X, CheckCircle2, Shield } from 'lucide-react';
+import { Heart, ArrowRight, Info, X, CheckCircle2, Shield, QrCode } from 'lucide-react';
 import { Cause } from '../types';
 import { IMAGES } from '../data/mockData';
 
 interface CausesProps {
   causes: Cause[];
   onSelectCauseToDonate: (causeId: string) => void;
+  onOpenUpiModal?: (amount?: number, causeId?: string) => void;
 }
 
-export const Causes: React.FC<CausesProps> = ({ causes, onSelectCauseToDonate }) => {
+export const Causes: React.FC<CausesProps> = ({
+  causes,
+  onSelectCauseToDonate,
+  onOpenUpiModal,
+}) => {
   const [selectedCauseDetails, setSelectedCauseDetails] = useState<Cause | null>(null);
 
   const getImageSrc = (index: Cause['imageIndex']) => {
@@ -132,23 +137,38 @@ export const Causes: React.FC<CausesProps> = ({ causes, onSelectCauseToDonate })
                   </div>
 
                   {/* Action Buttons */}
-                  <div className="flex items-center gap-3 pt-2">
-                    <button
-                      onClick={() => onSelectCauseToDonate(cause.id)}
-                      className="flex-1 inline-flex items-center justify-center gap-2 py-3 px-4 bg-[#176B4D] hover:bg-[#103D2B] text-white rounded-lg text-sm font-semibold transition-all shadow-sm hover:shadow active:scale-[0.98]"
-                    >
-                      <Heart className="w-4 h-4 text-[#D6B46A] fill-[#D6B46A]" />
-                      <span>Donate to This Cause</span>
-                    </button>
+                  <div className="pt-2">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <button
+                        onClick={() => onSelectCauseToDonate(cause.id)}
+                        className="flex-1 min-w-[110px] inline-flex items-center justify-center gap-1.5 py-2.5 px-3 bg-[#176B4D] hover:bg-[#103D2B] text-white rounded-lg text-xs sm:text-sm font-semibold transition-all shadow-sm active:scale-[0.98]"
+                      >
+                        <Heart className="w-3.5 h-3.5 text-[#D6B46A] fill-[#D6B46A]" />
+                        <span>Donate Now</span>
+                      </button>
 
-                    <button
-                      onClick={() => setSelectedCauseDetails(cause)}
-                      aria-label={`Learn more about ${cause.title}`}
-                      className="p-3 text-[#103D2B] hover:bg-[#176B4D]/10 rounded-lg border border-[#103D2B]/20 transition-colors"
-                      title="View full campaign scope"
-                    >
-                      <Info className="w-4 h-4" />
-                    </button>
+                      <button
+                        onClick={() =>
+                          onOpenUpiModal
+                            ? onOpenUpiModal(501, cause.id)
+                            : onSelectCauseToDonate(cause.id)
+                        }
+                        className="inline-flex items-center justify-center gap-1.5 py-2.5 px-3 bg-white hover:bg-stone-50 text-[#003366] rounded-lg text-xs sm:text-sm font-semibold border border-[#D6B46A] transition-all shadow-xs active:scale-[0.98]"
+                        title="Scan ICICI Bank UPI QR code directly"
+                      >
+                        <QrCode className="w-3.5 h-3.5 text-[#003366]" />
+                        <span>Make a Payment</span>
+                      </button>
+
+                      <button
+                        onClick={() => setSelectedCauseDetails(cause)}
+                        aria-label={`Learn more about ${cause.title}`}
+                        className="p-2.5 text-[#103D2B] hover:bg-[#176B4D]/10 rounded-lg border border-[#103D2B]/20 transition-colors"
+                        title="View full campaign scope"
+                      >
+                        <Info className="w-4 h-4" />
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -216,10 +236,10 @@ export const Causes: React.FC<CausesProps> = ({ causes, onSelectCauseToDonate })
                 </ul>
               </div>
 
-              <div className="flex items-center justify-end gap-3 pt-4 border-t border-[#103D2B]/10">
+              <div className="flex flex-wrap items-center justify-end gap-2.5 pt-4 border-t border-[#103D2B]/10">
                 <button
                   onClick={() => setSelectedCauseDetails(null)}
-                  className="px-5 py-2.5 text-sm font-medium text-[#202720] hover:bg-black/5 rounded-lg"
+                  className="px-4 py-2.5 text-sm font-medium text-[#202720] hover:bg-black/5 rounded-lg"
                 >
                   Close
                 </button>
@@ -227,9 +247,24 @@ export const Causes: React.FC<CausesProps> = ({ causes, onSelectCauseToDonate })
                   onClick={() => {
                     const id = selectedCauseDetails.id;
                     setSelectedCauseDetails(null);
+                    if (onOpenUpiModal) {
+                      onOpenUpiModal(501, id);
+                    } else {
+                      onSelectCauseToDonate(id);
+                    }
+                  }}
+                  className="inline-flex items-center gap-1.5 px-4 py-2.5 text-sm font-semibold text-[#003366] bg-white border border-[#D6B46A] hover:bg-stone-50 rounded-lg shadow-xs"
+                >
+                  <QrCode className="w-4 h-4 text-[#003366]" />
+                  <span>Make a Payment (UPI QR)</span>
+                </button>
+                <button
+                  onClick={() => {
+                    const id = selectedCauseDetails.id;
+                    setSelectedCauseDetails(null);
                     onSelectCauseToDonate(id);
                   }}
-                  className="inline-flex items-center gap-2 px-6 py-2.5 text-sm font-semibold text-white bg-[#176B4D] hover:bg-[#103D2B] rounded-lg shadow-sm"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-white bg-[#176B4D] hover:bg-[#103D2B] rounded-lg shadow-sm"
                 >
                   <Heart className="w-4 h-4 text-[#D6B46A] fill-[#D6B46A]" />
                   <span>Donate to This Cause</span>

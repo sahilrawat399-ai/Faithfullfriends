@@ -3,11 +3,16 @@ import { Menu, X, Heart, Shield, Lock } from 'lucide-react';
 
 interface NavbarProps {
   onDonateClick: () => void;
+  onMakePaymentClick?: () => void;
   onAdminClick: () => void;
   activeSection?: string;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ onDonateClick, onAdminClick }) => {
+export const Navbar: React.FC<NavbarProps> = ({
+  onDonateClick,
+  onMakePaymentClick,
+  onAdminClick,
+}) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -30,6 +35,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onDonateClick, onAdminClick }) =
     { label: 'Contact', href: '#contact' },
   ];
 
+  const handlePayment = onMakePaymentClick || onDonateClick;
+
   return (
     <>
       <header
@@ -40,8 +47,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onDonateClick, onAdminClick }) =
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Strict 3-zone Top Bar Contract: Brand — Links — 1 Primary CTA */}
-          <div className="flex items-center justify-between gap-8">
+          {/* Strict 3-zone Top Bar Contract: Brand — Links — Actions */}
+          <div className="flex items-center justify-between gap-6">
             {/* Zone 1: Brand Wordmark (Single text element) */}
             <a
               href="#"
@@ -53,7 +60,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onDonateClick, onAdminClick }) =
             </a>
 
             {/* Zone 2: Concise single-line navigation links */}
-            <nav className="hidden lg:flex items-center gap-7 text-sm font-medium whitespace-nowrap">
+            <nav className="hidden xl:flex items-center gap-6 text-sm font-medium whitespace-nowrap">
               {navLinks.map((link) => (
                 <a
                   key={link.label}
@@ -69,20 +76,28 @@ export const Navbar: React.FC<NavbarProps> = ({ onDonateClick, onAdminClick }) =
               ))}
             </nav>
 
-            {/* Zone 3: 1 Primary Action (Donate Now) + Mobile Menu Trigger */}
-            <div className="flex items-center gap-3 shrink-0">
+            {/* Zone 3: Actions (Make a Payment + Donate Now) + Mobile Menu Trigger */}
+            <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+              <button
+                onClick={handlePayment}
+                className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 text-xs sm:text-sm font-semibold tracking-wide text-[#003366] bg-white hover:bg-stone-50 rounded-lg shadow-sm border border-[#D6B46A]/60 transition-all active:scale-[0.98] whitespace-nowrap"
+              >
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                <span>Make a Payment</span>
+              </button>
+
               <button
                 onClick={onDonateClick}
-                className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold tracking-wide text-white bg-[#176B4D] hover:bg-[#103D2B] rounded-lg shadow-sm hover:shadow-md transition-all active:scale-[0.98] whitespace-nowrap shrink-0 border border-[#D6B46A]/30"
+                className="inline-flex items-center gap-1.5 px-4 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm font-semibold tracking-wide text-white bg-[#176B4D] hover:bg-[#103D2B] rounded-lg shadow-sm hover:shadow-md transition-all active:scale-[0.98] whitespace-nowrap shrink-0 border border-[#D6B46A]/40"
               >
-                <Heart className="w-4 h-4 text-[#D6B46A] fill-[#D6B46A]" />
+                <Heart className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#D6B46A] fill-[#D6B46A]" />
                 <span>Donate Now</span>
               </button>
 
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 aria-label="Toggle navigation menu"
-                className={`lg:hidden p-2 rounded-md transition-colors ${
+                className={`xl:hidden p-2 rounded-md transition-colors ${
                   isScrolled ? 'text-[#103D2B] hover:bg-[#103D2B]/5' : 'text-white hover:bg-white/10'
                 }`}
               >
@@ -93,9 +108,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onDonateClick, onAdminClick }) =
         </div>
       </header>
 
-      {/* Mobile Drawer (Max 15% sticky cap respected, closes on click) */}
+      {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-50 lg:hidden">
+        <div className="fixed inset-0 z-50 xl:hidden">
           <div
             className="fixed inset-0 bg-black/60 backdrop-blur-sm transition-opacity"
             onClick={() => setMobileMenuOpen(false)}
@@ -128,7 +143,18 @@ export const Navbar: React.FC<NavbarProps> = ({ onDonateClick, onAdminClick }) =
               </nav>
             </div>
 
-            <div className="pt-6 border-t border-[#103D2B]/10 flex flex-col gap-3">
+            <div className="pt-6 border-t border-[#103D2B]/10 flex flex-col gap-2.5">
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  handlePayment();
+                }}
+                className="w-full flex items-center justify-center gap-2 py-3 px-4 text-[#003366] bg-white border border-[#D6B46A] hover:bg-stone-50 rounded-lg font-bold text-sm shadow-sm"
+              >
+                <span className="w-2 h-2 rounded-full bg-emerald-500" />
+                <span>Make a Payment (UPI QR)</span>
+              </button>
+
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);
@@ -137,7 +163,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onDonateClick, onAdminClick }) =
                 className="w-full flex items-center justify-center gap-2 py-3 px-4 text-white bg-[#176B4D] hover:bg-[#103D2B] rounded-lg font-semibold text-sm shadow-sm"
               >
                 <Heart className="w-4 h-4 text-[#D6B46A] fill-[#D6B46A]" />
-                <span>Make a Secure Donation</span>
+                <span>Donate Now (80G Tax Exemption)</span>
               </button>
 
               <div className="flex items-center justify-between text-xs text-[#202720]/70 pt-2">
