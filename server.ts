@@ -250,7 +250,10 @@ let systemSettings = {
   upiNumber: '8595555318',
   merchantName: 'FAITHFUL FRIENDS WELFARE TRUST',
   bankName: 'ICICI Bank',
-  receiptPrefix: 'FFW/2026-27/'
+  receiptPrefix: 'FFW/2026-27/',
+  instagramUrl: 'https://www.instagram.com/faithfulfriendswelfare_trust/',
+  facebookUrl: 'https://www.facebook.com/profile.php?id=100091780464360',
+  youtubeUrl: 'https://www.youtube.com/@faithful.friends'
 };
 
 // --- API ROUTES ---

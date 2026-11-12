@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heart, ShieldCheck, Mail, Phone, MapPin, Lock } from 'lucide-react';
+import { Heart, ShieldCheck, Mail, Phone, MapPin, Lock, Instagram, Facebook, Youtube } from 'lucide-react';
 import { SystemSettings } from '../types';
 
 interface FooterProps {
@@ -52,6 +52,47 @@ export const Footer: React.FC<FooterProps> = ({
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                 <span>Make a Payment (UPI QR)</span>
               </button>
+            </div>
+
+            {/* Social Media Links (Instagram, Facebook, YouTube in order) */}
+            <div className="pt-4 space-y-2.5 border-t border-white/10">
+              <span className="text-[11px] uppercase tracking-wider text-[#D6B46A] font-bold block">
+                Connect With Us On Social Media
+              </span>
+              <div className="flex flex-wrap items-center gap-2.5">
+                <a
+                  href="https://www.instagram.com/faithfulfriendswelfare_trust/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Follow Faithful Friends Welfare Trust on Instagram"
+                  className="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-white/10 hover:bg-[#E1306C] text-[#FAF7F0] hover:text-white border border-white/15 hover:border-transparent text-xs font-semibold transition-all shadow-sm hover:scale-[1.02] group"
+                >
+                  <Instagram className="w-4 h-4 text-[#D6B46A] group-hover:text-white transition-colors shrink-0" />
+                  <span>Instagram</span>
+                </a>
+
+                <a
+                  href="https://www.facebook.com/profile.php?id=100091780464360"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Follow Faithful Friends Welfare Trust on Facebook"
+                  className="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-white/10 hover:bg-[#1877F2] text-[#FAF7F0] hover:text-white border border-white/15 hover:border-transparent text-xs font-semibold transition-all shadow-sm hover:scale-[1.02] group"
+                >
+                  <Facebook className="w-4 h-4 text-[#D6B46A] group-hover:text-white transition-colors shrink-0" />
+                  <span>Facebook</span>
+                </a>
+
+                <a
+                  href="https://www.youtube.com/@faithful.friends"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Subscribe to Faithful Friends Welfare Trust on YouTube"
+                  className="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-white/10 hover:bg-[#FF0000] text-[#FAF7F0] hover:text-white border border-white/15 hover:border-transparent text-xs font-semibold transition-all shadow-sm hover:scale-[1.02] group"
+                >
+                  <Youtube className="w-4 h-4 text-[#D6B46A] group-hover:text-white transition-colors shrink-0" />
+                  <span>YouTube</span>
+                </a>
+              </div>
             </div>
           </div>
 
@@ -126,6 +167,45 @@ export const Footer: React.FC<FooterProps> = ({
               <div className="flex items-center gap-2.5 pt-2">
                 <ShieldCheck className="w-4 h-4 text-[#D6B46A] shrink-0" />
                 <span>Section 80G Approval: {settings.section80G}</span>
+              </div>
+
+              {/* Official Social Icons */}
+              <div className="pt-3 border-t border-white/10 space-y-2">
+                <span className="text-[11px] uppercase tracking-wider text-[#D6B46A] font-semibold block">
+                  Follow Us Online
+                </span>
+                <div className="flex items-center gap-2">
+                  <a
+                    href="https://www.instagram.com/faithfulfriendswelfare_trust/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Instagram - Faithful Friends Welfare Trust"
+                    title="Instagram"
+                    className="w-8 h-8 rounded-lg bg-white/10 hover:bg-[#E1306C] text-[#FAF7F0] hover:text-white flex items-center justify-center transition-all border border-white/15 hover:scale-105"
+                  >
+                    <Instagram className="w-4 h-4" />
+                  </a>
+                  <a
+                    href="https://www.facebook.com/profile.php?id=100091780464360"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Facebook - Faithful Friends Welfare Trust"
+                    title="Facebook"
+                    className="w-8 h-8 rounded-lg bg-white/10 hover:bg-[#1877F2] text-[#FAF7F0] hover:text-white flex items-center justify-center transition-all border border-white/15 hover:scale-105"
+                  >
+                    <Facebook className="w-4 h-4" />
+                  </a>
+                  <a
+                    href="https://www.youtube.com/@faithful.friends"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="YouTube - Faithful Friends Welfare Trust"
+                    title="YouTube"
+                    className="w-8 h-8 rounded-lg bg-white/10 hover:bg-[#FF0000] text-[#FAF7F0] hover:text-white flex items-center justify-center transition-all border border-white/15 hover:scale-105"
+                  >
+                    <Youtube className="w-4 h-4" />
+                  </a>
+                </div>
               </div>
             </div>
           </div>

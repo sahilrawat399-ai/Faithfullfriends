@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Heart, Shield, Lock } from 'lucide-react';
+import { Menu, X, Heart, Shield, Lock, Instagram, Facebook, Youtube } from 'lucide-react';
 
 interface NavbarProps {
   onDonateClick: () => void;
@@ -179,6 +179,43 @@ export const Navbar: React.FC<NavbarProps> = ({
                 >
                   <Lock className="w-3 h-3" /> Admin Portal
                 </button>
+              </div>
+
+              {/* Social Channels Row */}
+              <div className="pt-3 border-t border-[#103D2B]/10 flex items-center justify-between">
+                <span className="text-xs font-semibold text-[#103D2B]">Follow Us Online:</span>
+                <div className="flex items-center gap-2">
+                  <a
+                    href="https://www.instagram.com/faithfulfriendswelfare_trust/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Instagram - Faithful Friends Welfare Trust"
+                    title="Instagram"
+                    className="p-2 rounded-lg bg-[#176B4D]/10 hover:bg-[#E1306C] text-[#103D2B] hover:text-white transition-all shadow-xs"
+                  >
+                    <Instagram className="w-4 h-4" />
+                  </a>
+                  <a
+                    href="https://www.facebook.com/profile.php?id=100091780464360"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Facebook - Faithful Friends Welfare Trust"
+                    title="Facebook"
+                    className="p-2 rounded-lg bg-[#176B4D]/10 hover:bg-[#1877F2] text-[#103D2B] hover:text-white transition-all shadow-xs"
+                  >
+                    <Facebook className="w-4 h-4" />
+                  </a>
+                  <a
+                    href="https://www.youtube.com/@faithful.friends"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="YouTube - Faithful Friends Welfare Trust"
+                    title="YouTube"
+                    className="p-2 rounded-lg bg-[#176B4D]/10 hover:bg-[#FF0000] text-[#103D2B] hover:text-white transition-all shadow-xs"
+                  >
+                    <Youtube className="w-4 h-4" />
+                  </a>
+                </div>
               </div>
             </div>
           </div>

@@ -36,7 +36,10 @@ const DEFAULT_SETTINGS: SystemSettings = {
   upiNumber: '8595555318',
   merchantName: 'FAITHFUL FRIENDS WELFARE TRUST',
   bankName: 'ICICI Bank',
-  receiptPrefix: 'FFW/2026-27/'
+  receiptPrefix: 'FFW/2026-27/',
+  instagramUrl: 'https://www.instagram.com/faithfulfriendswelfare_trust/',
+  facebookUrl: 'https://www.facebook.com/profile.php?id=100091780464360',
+  youtubeUrl: 'https://www.youtube.com/@faithful.friends'
 };
 
 export default function App() {

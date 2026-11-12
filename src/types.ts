@@ -61,6 +61,9 @@ export interface SystemSettings {
   merchantName?: string;
   bankName?: string;
   receiptPrefix: string;
+  instagramUrl?: string;
+  facebookUrl?: string;
+  youtubeUrl?: string;
   hasServerSecret?: boolean;
 }
 
