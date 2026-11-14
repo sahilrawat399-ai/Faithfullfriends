@@ -24,12 +24,32 @@ export const Footer: React.FC<FooterProps> = ({
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12 pb-14 border-b border-white/10">
           {/* Brand & Mission Statement (5 cols) */}
           <div className="lg:col-span-5 space-y-4">
-            <h3 className="text-2xl font-serif font-bold text-white tracking-tight">
-              Faithful Friends Welfare Trust
-            </h3>
-            <p className="text-xs uppercase tracking-widest text-[#D6B46A] font-semibold">
-              Faithful Friends Welfare Trust · Reg. No: {settings.registrationNumber}
-            </p>
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+              <div className="h-16 sm:h-20 w-auto min-w-[80px] sm:min-w-[96px] bg-white rounded-2xl p-2 shadow-lg border-2 border-[#D6B46A]/80 overflow-hidden flex items-center justify-center shrink-0">
+                <img
+                  src="/assets/images/logo.png"
+                  onError={(e) => {
+                    const target = e.currentTarget as HTMLImageElement;
+                    if (!target.src.includes('src/assets')) {
+                      target.src = '/src/assets/images/logo.png';
+                    }
+                  }}
+                  alt="Faithful Friends Welfare Trust Logo"
+                  className="h-12 sm:h-16 w-auto object-contain select-none"
+                />
+              </div>
+              <div>
+                <h3 className="text-xl sm:text-2xl font-serif font-bold text-white tracking-tight">
+                  Faithful Friends Welfare Trust
+                </h3>
+                <p className="text-[11px] uppercase tracking-widest text-[#D6B46A] font-semibold mt-0.5">
+                  Registered Non-Profit Trust · Reg. No: {settings.registrationNumber}
+                </p>
+                <p className="text-xs text-[#FAF7F0]/70 mt-1">
+                  Income Tax Section 80G Certified · NITI Aayog Darpan UID: {settings.darpanId}
+                </p>
+              </div>
+            </div>
             <p className="text-sm text-[#FAF7F0]/80 leading-relaxed max-w-md">
               A registered non-profit welfare organisation dedicated to distributing wholesome meals
               to underprivileged children, feeding the hungry, protecting indigenous cows, and conducting
@@ -161,7 +181,9 @@ export const Footer: React.FC<FooterProps> = ({
 
               <div className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-[#D6B46A] shrink-0" />
-                <span>{settings.contactPhone}</span>
+                <a href={`tel:${settings.contactPhone.replace(/[^0-9+]/g, '')}`} className="hover:text-white underline">
+                  {settings.contactPhone}
+                </a>
               </div>
 
               <div className="flex items-center gap-2.5 pt-2">

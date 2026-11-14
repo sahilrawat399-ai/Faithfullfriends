@@ -162,8 +162,18 @@ export const UpiQrModal: React.FC<UpiQrModalProps> = ({
         {/* Header Bar */}
         <div className="relative bg-gradient-to-r from-[#003366] via-[#0B4A82] to-[#103D2B] text-white px-6 py-5 flex items-center justify-between border-b-2 border-[#D6B46A]">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-white/10 border border-[#D6B46A]/50 flex items-center justify-center shadow-inner">
-              <QrCode className="w-5 h-5 text-[#D6B46A]" />
+            <div className="h-12 sm:h-14 w-auto min-w-[56px] rounded-xl bg-white px-2 py-1 border border-[#D6B46A]/80 flex items-center justify-center shadow-md overflow-hidden shrink-0">
+              <img
+                src="/assets/images/logo.png"
+                onError={(e) => {
+                  const target = e.currentTarget as HTMLImageElement;
+                  if (!target.src.includes('src/assets')) {
+                    target.src = '/src/assets/images/logo.png';
+                  }
+                }}
+                alt="Faithful Friends Welfare Trust Logo"
+                className="h-10 sm:h-12 w-auto object-contain select-none"
+              />
             </div>
             <div>
               <div className="flex items-center gap-2">

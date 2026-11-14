@@ -49,14 +49,31 @@ export const Navbar: React.FC<NavbarProps> = ({
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Strict 3-zone Top Bar Contract: Brand — Links — Actions */}
           <div className="flex items-center justify-between gap-6">
-            {/* Zone 1: Brand Wordmark (Single text element) */}
+            {/* Zone 1: Brand Wordmark with Prominent Official Logo */}
             <a
               href="#"
-              className={`text-xl sm:text-2xl font-serif font-bold tracking-tight whitespace-nowrap shrink-0 transition-colors ${
-                isScrolled ? 'text-[#103D2B]' : 'text-white'
-              }`}
+              className="flex items-center gap-3 sm:gap-3.5 shrink-0 group"
             >
-              Faithful Friends Welfare Trust
+              <div className="h-12 sm:h-14 w-auto min-w-[56px] rounded-xl bg-white px-2 py-1 shadow-md border border-[#D6B46A]/60 overflow-hidden flex items-center justify-center shrink-0 transition-transform group-hover:scale-105">
+                <img
+                  src="/assets/images/logo.png"
+                  onError={(e) => {
+                    const target = e.currentTarget as HTMLImageElement;
+                    if (!target.src.includes('src/assets')) {
+                      target.src = '/src/assets/images/logo.png';
+                    }
+                  }}
+                  alt="Faithful Friends Welfare Trust Logo"
+                  className="h-10 sm:h-12 w-auto object-contain select-none"
+                />
+              </div>
+              <span
+                className={`text-lg sm:text-xl font-serif font-bold tracking-tight whitespace-nowrap transition-colors ${
+                  isScrolled ? 'text-[#103D2B]' : 'text-white'
+                }`}
+              >
+                Faithful Friends Welfare Trust
+              </span>
             </a>
 
             {/* Zone 2: Concise single-line navigation links */}
@@ -118,9 +135,24 @@ export const Navbar: React.FC<NavbarProps> = ({
           <div className="fixed inset-y-0 right-0 w-full max-w-xs bg-[#FAF7F0] shadow-xl flex flex-col justify-between p-6 overflow-y-auto">
             <div>
               <div className="flex items-center justify-between pb-4 border-b border-[#103D2B]/10">
-                <span className="font-serif font-bold text-lg text-[#103D2B]">
-                  Faithful Friends Welfare Trust
-                </span>
+                <div className="flex items-center gap-3">
+                  <div className="h-12 w-auto min-w-[54px] rounded-xl bg-white px-2 py-1 shadow border border-[#D6B46A]/60 overflow-hidden flex items-center justify-center shrink-0">
+                    <img
+                      src="/assets/images/logo.png"
+                      onError={(e) => {
+                        const target = e.currentTarget as HTMLImageElement;
+                        if (!target.src.includes('src/assets')) {
+                          target.src = '/src/assets/images/logo.png';
+                        }
+                      }}
+                      alt="Faithful Friends Welfare Trust Logo"
+                      className="h-10 w-auto object-contain"
+                    />
+                  </div>
+                  <span className="font-serif font-bold text-base text-[#103D2B] leading-tight">
+                    Faithful Friends Welfare Trust
+                  </span>
+                </div>
                 <button
                   onClick={() => setMobileMenuOpen(false)}
                   className="p-1.5 text-[#202720] hover:bg-black/5 rounded-md"

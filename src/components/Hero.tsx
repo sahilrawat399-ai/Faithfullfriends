@@ -102,8 +102,21 @@ export const Hero: React.FC<HeroProps> = ({
       {/* Main Content Container */}
       <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full my-auto py-12 lg:py-20">
         <div className="max-w-3xl">
-          {/* Subdued Editorial Eyebrow */}
-          <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-[#D6B46A] font-semibold mb-4">
+          {/* Subdued Editorial Eyebrow with Official Logo Mark */}
+          <div className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-widest text-[#D6B46A] font-semibold mb-5">
+            <div className="h-10 sm:h-12 w-auto min-w-[50px] bg-white rounded-xl px-2 py-1 border border-[#D6B46A]/80 flex items-center justify-center shrink-0 shadow-md overflow-hidden">
+              <img
+                src="/assets/images/logo.png"
+                onError={(e) => {
+                  const target = e.currentTarget as HTMLImageElement;
+                  if (!target.src.includes('src/assets')) {
+                    target.src = '/src/assets/images/logo.png';
+                  }
+                }}
+                alt="Faithful Friends Welfare Trust Logo Mark"
+                className="h-8 sm:h-10 w-auto object-contain select-none"
+              />
+            </div>
             <span>Faithful Friends Welfare Trust</span>
             <span aria-hidden="true">·</span>
             <span>Registered Non-Profit Trust</span>

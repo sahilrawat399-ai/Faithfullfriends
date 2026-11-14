@@ -7,6 +7,7 @@ export const IMAGES = {
   careForCows: '/src/assets/images/cause_care_for_cows_1792750367182.jpg',
   communityWelfare: '/src/assets/images/cause_community_welfare_1792750367432.jpg',
   upiQr: '/src/assets/images/icici_upi_qr.jpeg',
+  logo: '/src/assets/images/logo.png',
 };
 
 export const INITIAL_CAUSES: Cause[] = [

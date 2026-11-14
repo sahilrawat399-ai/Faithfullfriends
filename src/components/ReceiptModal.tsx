@@ -102,12 +102,12 @@ Frequency:      ${donation.frequency}
 STATUTORY COMPLIANCE:
 Trust Reg No:   FFWT/2021/DEL/7841
 NITI Aayog UID: DL/2021/0284721
-80G Exemption:  AAATF1289RF20214
+80G Exemption:  AAATF9006HF20261
 12A Exemption:  AAATF1289RE20212
 
 Registered Office:
-Plot 14-B, Institutional Area, Sector 5, Rohini, New Delhi - 110085
-Email: contact@faithfulfriendswelfare.org
+H. No 56 Street no 12 saraswati colony Sehatpur Faridabad near shiv Garden shani bazaar pin 121003
+Email: faithfulfriendstrust@gmail.com · Phone: 8595555318
 ============================================================
 Thank you for your noble generosity. Small acts of kindness
 make a world of difference.
@@ -167,16 +167,31 @@ make a world of difference.
         <div className="p-6 sm:p-10 space-y-6 text-[#202720]">
           {/* Header & Letterhead */}
           <div className="border-b-2 border-[#103D2B] pb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-            <div>
-              <h2 className="text-2xl sm:text-3xl font-serif font-bold text-[#103D2B] tracking-tight">
-                Faithful Friends Welfare Trust
-              </h2>
-              <p className="text-xs text-[#202720]/75 font-medium mt-0.5">
-                Faithful Friends Welfare Trust · Reg. No: FFWT/2021/DEL/7841
-              </p>
-              <p className="text-[11px] text-[#202720]/60">
-                NITI Aayog Darpan UID: DL/2021/0284721 · Sector 5, Rohini, New Delhi
-              </p>
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+              <div className="h-18 sm:h-22 w-auto min-w-[85px] sm:min-w-[105px] bg-white p-1.5 border-2 border-[#103D2B]/30 rounded-2xl shadow-xs overflow-hidden flex items-center justify-center shrink-0">
+                <img
+                  src="/assets/images/logo.png"
+                  onError={(e) => {
+                    const target = e.currentTarget as HTMLImageElement;
+                    if (!target.src.includes('src/assets')) {
+                      target.src = '/src/assets/images/logo.png';
+                    }
+                  }}
+                  alt="Faithful Friends Welfare Trust Official Logo"
+                  className="h-14 sm:h-18 w-auto object-contain select-none"
+                />
+              </div>
+              <div>
+                <h2 className="text-xl sm:text-2xl lg:text-3xl font-serif font-bold text-[#103D2B] tracking-tight">
+                  Faithful Friends Welfare Trust
+                </h2>
+                <p className="text-xs text-[#202720]/75 font-medium mt-0.5">
+                  Faithful Friends Welfare Trust · Reg. No: FFWT/2021/DEL/7841
+                </p>
+                <p className="text-[11px] text-[#202720]/60">
+                  NITI Aayog Darpan UID: DL/2021/0284721 · Sehatpur, Faridabad - 121003
+                </p>
+              </div>
             </div>
 
             <div className="sm:text-right bg-[#FAF7F0] p-3 rounded-xl border border-[#103D2B]/10">
@@ -205,7 +220,7 @@ make a world of difference.
               </span>
             </div>
             <span className="font-mono text-emerald-900 font-semibold text-[11px]">
-              URN: AAATF1289RF20214
+              URN: AAATF9006HF20261
             </span>
           </div>
 

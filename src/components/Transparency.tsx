@@ -231,7 +231,9 @@ trust regulations and Indian Trusts Act.
                 </p>
                 <p>
                   <span className="font-medium text-stone-500">Helpline & Verification:</span>{' '}
-                  {settings.contactPhone}
+                  <a href={`tel:${settings.contactPhone.replace(/[^0-9+]/g, '')}`} className="text-[#103D2B] hover:underline">
+                    {settings.contactPhone}
+                  </a>
                 </p>
                 <p>
                   <span className="font-medium text-stone-500">Office Hours:</span> Monday to Saturday, 09:30 AM – 06:00 PM IST
